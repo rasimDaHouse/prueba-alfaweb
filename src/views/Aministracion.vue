@@ -65,30 +65,30 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions } from 'vuex';
 export default {
   data() {
     return {
       form: {
-        curso: "",
-        cupos: "",
-        inscritos: "",
-        duracion: "",
-        costo: "",
-        terminado: "",
-        fecha: "",
-        descripcion: "",
-        url: "",
+        curso: '',
+        cupos: '',
+        inscritos: '',
+        duracion: '',
+        costo: '',
+        terminado: '',
+        fecha: '',
+        descripcion: '',
+        url: '',
       },
     };
   },
 
   computed: {
-    ...mapState("cursos", ["doc"]),
+    ...mapState('cursos', ['doc']),
   },
 
   methods: {
-    ...mapActions("cursos", ["getCurso", "updateCurso"]),
+    ...mapActions('cursos', ['getCurso', 'updateCurso']),
     volver() {
       this.$router.push(`/administracion`);
     },

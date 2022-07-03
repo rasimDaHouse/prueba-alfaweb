@@ -24,23 +24,23 @@ export const sesionModule = {
     async subscribeToAuthStateChange({ commit }) {
       Firebase.auth().onAuthStateChanged((usuario) => {
         commit('SET_USER', usuario);
-        if (usuario) Router.push('/home');
+        if(usuario) Router.push("/home")
       });
     },
-    async InicioPasswordEmail({ commit }, credentials) {
+    async inicioPasswordEmail({ commit }, credentials) {
       commit('SET_LOADING', true);
       try {
-        await Firebase.auth().InicioPasswordEmail(
+        await Firebase.auth().inicioPasswordEmail(
           credentials.email,
           credentials.password
         );
       } catch (e) {
-        console.error('Error', e);
+        console.error('error', e);
       } finally {
         commit('SET_LOADING', false);
       }
     },
-    async crearUsuario({ commit }, newUser) {
+    async crearUsuario({ commit }, nuevoUsuario) {
       commit('SET_LOADING', true);
 
       try {
@@ -54,12 +54,12 @@ export const sesionModule = {
         commit('SET_LOADING', false);
       }
     },
-    async cierreSesion({ commit }) {
+    async cerrarSesion({ commit }) {
       commit('SET_LOADING', true);
       try {
-        await Firebase.auth().cierreSesion();
+        await Firebase.auth().cerrarSesion();
       } catch (e) {
-        console.error('Error', e);
+        console.error('Error al iniciar sesión', e);
       } finally {
         commit('SET_LOADING', false);
       }

@@ -10,36 +10,36 @@
           <v-text-field
             label="Nombre"
             :rules="[required]"
-            v-model="lecture.name"
+            v-model="curso.name"
           ></v-text-field>
           <v-text-field
             label="URL de la Imagen del Curso"
-            v-model="lecture.img"
+            v-model="curso.img"
             :rules="[required]"
           ></v-text-field>
           <v-text-field
             label="Cupos del curso"
-            v-model.number="lecture.quota"
+            v-model.number="curso.quota"
             :rules="[required]"
           ></v-text-field>
           <v-text-field
             label="Inscritos en el curso"
-            v-model.number="lecture.enrolled"
+            v-model.number="curso.enrolled"
             :rules="[required]"
           ></v-text-field>
           <v-text-field
             label="Duración del curso"
-            v-model="lecture.span"
+            v-model="curso.span"
             :rules="[required]"
           ></v-text-field>
           <v-text-field
             label="Costo del curso"
-            v-model.number="lecture.price"
+            v-model.number="curso.price"
             :rules="[required]"
           ></v-text-field>
           <v-textarea
             label="Descrición del curso"
-            v-model="lecture.description"
+            v-model="curso.description"
             :rules="[required]"
           ></v-textarea>
         </v-card-text>
@@ -56,7 +56,7 @@ import { mapActions } from 'vuex';
 export default {
   data: () => ({
     dialog: false,
-    lecture: {
+    curso: {
       name: '',
       description: '',
       img: '',
@@ -76,7 +76,7 @@ export default {
     },
     async handleFormSubmit() {
       if (this.$refs.form.validate()) {
-        await this.crearCurso({ ...this.lecture });
+        await this.crearCurso({ ...this.curso });
         this.dialog = false;
         await this.getAllCursos();
       }

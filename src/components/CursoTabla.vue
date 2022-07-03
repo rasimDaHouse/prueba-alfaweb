@@ -15,6 +15,7 @@
         {{ item.date }}
       </v-chip>
     </template>
+
   </v-data-table>
 </template>
 
@@ -57,6 +58,7 @@ export default {
       },
     ],
   }),
+   
 };
 </script>
 

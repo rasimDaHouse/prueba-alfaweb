@@ -5,20 +5,10 @@
         <v-form @submit.prevent="handleSignInFormSubmit" ref="signInFormRef">
           <v-card-title> Inicia sesión con tus credenciales </v-card-title>
           <v-card-text>
-            <v-text-field
-              type="email"
-              label="Correo electrónico"
-              outlined
-              v-model="credentials.email"
-              :rules="[required, mustBeEmail]"
-            ></v-text-field>
-            <v-text-field
-              type="password"
-              label="Contraseña"
-              outlined
-              v-model="credentials.password"
-              :rules="[required, minLength(6)]"
-            ></v-text-field>
+            <v-text-field type="email" label="Correo electrónico" outlined v-model="credentials.email"
+              :rules="[required, mustBeEmail]"></v-text-field>
+            <v-text-field type="password" label="Contraseña" outlined v-model="credentials.password"
+              :rules="[required, minLength(6)]"></v-text-field>
           </v-card-text>
           <v-card-actions>
             <v-btn color="success" block type="submit">
@@ -27,8 +17,12 @@
             </v-btn>
           </v-card-actions>
         </v-form>
+        <v-alert dense outlined type="error" mt-5 style="margin-top: 20px" @click="$router.push('/registrarse')">
+          ¿No tienes una cuenta? Regístrate, es gratis
+        </v-alert>
       </v-card>
     </v-flex>
+
   </v-layout>
 </template>
 
@@ -74,4 +68,5 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+</style>

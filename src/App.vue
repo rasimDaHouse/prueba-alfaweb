@@ -2,10 +2,11 @@
   <v-app>
     <v-app-bar app color="primary" dark @click="drawer = !drawer">
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
-      <v-app-bar-title> Cursos alfaweb </v-app-bar-title>
+      <v-app-bar-title> Cursos Alfaweb </v-app-bar-title>
       <v-spacer></v-spacer>
 
       <BarraSesion v-if="loginActivo" />
+      <IniciarSesionBtn v-if="!loginActivo" link to="/iniciarsesion" />
     </v-app-bar>
 
     <v-navigation-drawer app clipped v-model="drawer">
@@ -23,6 +24,7 @@
           <v-list-item-title>Administrar Cursos</v-list-item-title>
         </v-list-item>
       </v-list>
+      <CerrarSesionBtn v-if="loginActivo" />
     </v-navigation-drawer>
 
     <v-main>
@@ -34,11 +36,15 @@
 </template>
 
 <script>
-import BarraSesion from '@/components/BarraSesion';
 import { mapGetters } from 'vuex';
+import BarraSesion from '@/components/BarraSesion';
+import IniciarSesionBtn from '@/components/IniciarSesionBtn';
+import CerrarSesionBtn from '@/components/CerrarSesionBtn';
 export default {
   components: {
     BarraSesion,
+    IniciarSesionBtn,
+    CerrarSesionBtn,
   },
   data: () => ({
     drawer: false,
