@@ -1,4 +1,4 @@
-# prueba-vuejs
+# 1-prueba-gigeo-app
 
 ## Project setup
 ```
@@ -17,4 +17,3 @@ npm run build
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
-# prueba-alfaweb

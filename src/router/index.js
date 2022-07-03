@@ -1,12 +1,12 @@
-import Store from '@/store/';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import Store from '@/store/';
 
-import Cursos from '@/views/Cursos.vue';
-import CursosHome from '@/views/CursosHome.vue';
-import EditarCursos from '@/views/EditarCursos.vue';
-import IniciarSesion from '@/views/IniciarSesion.vue';
-import Registrarse from '@/views/Registrarse.vue';
+import SignIn from '@/views/SignInView.vue';
+import SignUp from '@/views/SignUpView.vue';
+import Courses from '@/views/CoursesView.vue';
+import EditCourse from '@/views/EditCourseView.vue';
+import CoursesHome from '@/views/CoursesHomeView.vue';
 
 Vue.use(VueRouter);
 
@@ -16,34 +16,34 @@ const routes = [
     redirect: '/home',
   },
   {
-    path: '/iniciarsesion',
-    name: 'IniciarSesion',
-    component: IniciarSesion,
-    meta: { loginRequerido: false },
+    path: '/signin',
+    name: 'SignIn',
+    component: SignIn,
+    meta: { requireLogin: false },
   },
   {
-    path: '/registrarse',
-    name: 'Registrarse',
-    component: Registrarse,
-    meta: { loginRequerido: false },
+    path: '/signup',
+    name: 'SignUp',
+    component: SignUp,
+    meta: { requireLogin: false },
   },
   {
-    path: '/cursos',
-    name: 'Cursos',
-    component: Cursos,
-    meta: { loginRequerido: true },
+    path: '/courses',
+    name: 'Courses',
+    component: Courses,
+    meta: { requireLogin: true },
   },
   {
-    path: '/cursos/:cursoId',
-    name: 'EditarCursos',
-    component: EditarCursos,
-    meta: { loginRequerido: true },
+    path: '/courses/:courseId',
+    name: 'EditCourse',
+    component: EditCourse,
+    meta: { requireLogin: true },
   },
   {
     path: '/home',
-    name: 'CursosHome',
-    component: CursosHome,
-    meta: { loginRequerido: true },
+    name: 'CoursesHome',
+    component: CoursesHome,
+    meta: { requireLogin: false },
   },
 ];
 
@@ -54,13 +54,13 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  const loginRequerido = to.meta.loginRequerido;
-  const loginActivo = Store.getters['sesion/loginActivo'];
-  if (loginRequerido) {
-    if (loginActivo) {
+  const requireLogin = to.meta.requireLogin;
+  const activeLogin = Store.getters['session/activeLogin'];
+  if (requireLogin) {
+    if (activeLogin) {
       next();
     } else {
-      next('/iniciarsesion');
+      next('/signin');
     }
   } else {
     next();

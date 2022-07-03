@@ -1,14 +1,14 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import { cursosModule as cursos } from "@/store/modules/cursos";
-import { sesionModule as sesion } from '@/store/modules/sesion.js';
+import { sessionModule as session } from '@/store/modules/session.js';
+import { coursesModule as courses} from "@/store/modules/courses.js"
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   modules: {
-    sesion,
-    cursos
+    session,
+    courses
   },
 });
